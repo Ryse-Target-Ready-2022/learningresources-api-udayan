@@ -1,13 +1,18 @@
 package com.target.rysetii.learningresourcesapi.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
+
 @Entity
-@Table(name="learningresources")
+@Table(name = "learningresources")
 public class LearningResource {
 
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "PRODUCTNAME")
     private String productName;
@@ -26,6 +31,7 @@ public class LearningResource {
     private LocalDate retiredDate;
 
     public LearningResource(int id, String productName, double costPrice, double sellingPrice, LearningResourceStatus learningResourceStatus, LocalDate createdDate, LocalDate publishedDate, LocalDate retiredDate) {
+        super();
         this.id = id;
         this.productName = productName;
         this.costPrice = costPrice;
@@ -36,23 +42,9 @@ public class LearningResource {
         this.retiredDate = retiredDate;
     }
 
-    @Override
-    public String toString() {
-        return "LearningResource{" +
-                "id=" + id +
-                ", productName='" + productName + '\'' +
-                ", costPrice=" + costPrice +
-                ", sellingPrice=" + sellingPrice +
-                ", learningResourceStatus=" + learningResourceStatus +
-                ", createdDate=" + createdDate +
-                ", publishedDate=" + publishedDate +
-                ", retiredDate=" + retiredDate +
-                '}';
+    public LearningResource(){
+        super();
     }
-
-
-
-
     public int getId() {
         return id;
     }
@@ -117,5 +109,17 @@ public class LearningResource {
         this.retiredDate = retiredDate;
     }
 
-
+    @Override
+    public String toString() {
+        return "LearningResource{" +
+                "id=" + id +
+                ", productName='" + productName + '\'' +
+                ", costPrice=" + costPrice +
+                ", sellingPrice=" + sellingPrice +
+                ", learningResourceStatus=" + learningResourceStatus +
+                ", createdDate=" + createdDate +
+                ", publishedDate=" + publishedDate +
+                ", retiredDate=" + retiredDate +
+                '}';
+    }
 }
